@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Polymath Path</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="logo">P</div><div><h1>Polymath Path</h1><p>Structured mastery across disciplines.</p></div></div>
+      <nav>
+        <button class="nav active" data-view="dashboard">Dashboard</button>
+        <button class="nav" data-view="domains">Domains</button>
+        <button class="nav" data-view="missions">Daily Missions</button>
+        <button class="nav" data-view="projects">Projects</button>
+        <button class="nav" data-view="review">Weekly Review</button>
+        <button class="nav" data-view="archive">Archive</button>
+      </nav>
+      <section class="side-card"><p class="eyebrow">Operating Rule</p><p>No passive learning. Every subject must create output: notes, reps, essays, prototypes, teaching, or performance.</p></section>
+    </aside>
+
+    <main>
+      <header class="topbar">
+        <div><p class="eyebrow">Current Operation</p><h2 id="operationTitle">Project Polymath</h2></div>
+        <div class="actions"><button id="exportBtn">Export</button><label class="importBtn">Import<input id="importInput" type="file" accept="application/json" /></label><button id="resetBtn" class="danger">Reset</button></div>
+      </header>
+
+      <section id="dashboard" class="view active-view">
+        <div class="hero"><div><p class="eyebrow">Command Center</p><h3>Become broad, deep, disciplined, and useful.</h3><p>The system rotates your attention across core domains while forcing daily proof of work and weekly correction.</p></div><div class="rank"><p class="eyebrow">Rank</p><h3 id="rankTitle">Initiate</h3><div class="bar"><span id="xpFill"></span></div><p><span id="xpValue">0</span> XP total</p></div></div>
+        <div class="metrics"><div><strong id="dailyScore">0</strong><span>Daily Score</span></div><div><strong id="streak">0</strong><span>Day Streak</span></div><div><strong id="completedCount">0</strong><span>Completed</span></div><div><strong id="outputCount">0</strong><span>Outputs</span></div></div>
+        <div class="grid two"><section class="panel"><div class="panel-head"><h3>Today's Missions</h3><button id="generateTodayBtn">Generate Today</button></div><div id="todayMissions" class="list"></div></section><section class="panel"><h3>Polymath Compass</h3><div id="compass" class="compass"></div></section></div>
+      </section>
+
+      <section id="domains" class="view"><section class="panel"><div class="panel-head"><div><p class="eyebrow">Eight-domain architecture</p><h3>Skill Trees</h3></div><button id="addDomainBtn">Add Domain</button></div><div id="domainGrid" class="domain-grid"></div></section></section>
+
+      <section id="missions" class="view"><section class="panel"><div class="panel-head"><div><p class="eyebrow">Daily execution</p><h3>Mission Builder</h3></div></div><form id="missionForm" class="form-grid"><input id="missionTitle" placeholder="Mission title" required /><select id="missionDomain"></select><input id="missionXp" type="number" min="5" max="200" step="5" value="25" /><button>Add Mission</button></form><div id="allMissions" class="list"></div></section></section>
+
+      <section id="projects" class="view"><section class="panel"><div class="panel-head"><div><p class="eyebrow">Output engine</p><h3>Capstone Projects</h3></div></div><form id="projectForm" class="project-form"><input id="projectTitle" placeholder="Project title" required /><select id="projectDomain"></select><textarea id="projectDefinition" placeholder="Define a concrete deliverable: essay, app, debate brief, prototype, experiment, presentation..." required></textarea><button>Add Project</button></form><div id="projectList" class="list"></div></section></section>
+
+      <section id="review" class="view"><section class="panel"><div class="panel-head"><div><p class="eyebrow">Correction loop</p><h3>Weekly Review</h3></div><button id="saveReviewBtn">Save Review</button></div><div class="review-grid"><label>What did I learn deeply this week?<textarea id="reviewLearned"></textarea></label><label>Where did I fake progress?<textarea id="reviewFake"></textarea></label><label>What output proves I improved?<textarea id="reviewProof"></textarea></label><label>What is next week's brutal priority?<textarea id="reviewPriority"></textarea></label></div><div id="reviewHistory" class="list"></div></section></section>
+
+      <section id="archive" class="view"><section class="panel"><div class="panel-head"><div><p class="eyebrow">Memory bank</p><h3>Operation Archive</h3></div><button id="newOperationBtn">Start New Operation</button></div><div id="archiveList" class="list"></div></section></section>
+    </main>
+  </div>
+
+  <dialog id="outputDialog"><form method="dialog" id="outputForm"><h3>Log Proof of Work</h3><p id="dialogMission"></p><textarea id="outputText" placeholder="What did you do? What proof exists? What did you learn?" required></textarea><menu><button value="cancel">Cancel</button><button id="submitOutputBtn" value="default">Complete Mission</button></menu></form></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
